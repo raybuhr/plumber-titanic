@@ -29,3 +29,7 @@ The API here has three main components:
 
 ![](screenshots/plumber_survival_error_screenshot.png)
 
+
+And over course, this works from the command line as well. Here is hitting with a simple curl request (piped into jq).
+
+![](screenshots/plumber_curl_screenshot.png)
