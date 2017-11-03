@@ -7,7 +7,7 @@ VARIABLES <- list(
   sex = "Sex = male or female",
   age = "Age = # in years",
   gap = "",
-  survival = "Successful submission will results in a calculated Survival Probability from 0 to 1 (Unlikely to More Likely)"
+  survival = "Successful submission will result in a calculated Survival Probability from 0 to 1 (Unlikely to More Likely)"
   )
 
 
@@ -57,11 +57,11 @@ home <- function() {
 
 # helper functions for predict --------------------------------------------
 
-transform_titantic_data <- function(input_titantic_data) {
-  ouput_titantic_data <- data.frame(
-    pclass = factor(input_titantic_data$Pclass, levels = c(1, 2, 3)),
-    female = tolower(input_titantic_data$Sex) == "female",
-    age = factor(dplyr::if_else(input_titantic_data$Age < 18, "child", "adult", "unknown"), 
+transform_titanic_data <- function(input_titanic_data) {
+  ouput_titanic_data <- data.frame(
+    pclass = factor(input_titanic_data$Pclass, levels = c(1, 2, 3)),
+    female = tolower(input_titanic_data$Sex) == "female",
+    age = factor(dplyr::if_else(input_titanic_data$Age < 18, "child", "adult", "unknown"), 
                  levels = c("child", "adult", "unknown"))
   )
 }
@@ -98,7 +98,7 @@ predict_survival <- function(Age=NA, Pclass=NULL, Sex=NULL) {
     prediction <- predict(model, clean_data, type = "response")
     result <- list(
       input = list(payload),
-      reposnse = list("survival_probability" = prediction,
+      response = list("survival_probability" = prediction,
                       "survival_prediction" = (prediction >= 0.5)
                       ),
       status = 200,
